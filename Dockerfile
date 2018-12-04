@@ -2,7 +2,7 @@ FROM golang:1.11.1 as builder
 WORKDIR /
 COPY .    /
 # Build
-RUN go mod tidy && make build
+RUN make deps && make build
 
 FROM debian:9.5-slim
 WORKDIR /root/
