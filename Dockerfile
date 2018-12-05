@@ -2,9 +2,11 @@ FROM golang:1.11.1 as builder
 WORKDIR /
 COPY .    /
 # Build
-RUN make deps && make build
+RUN make deps && make build && ls -sail
 
-FROM debian:9.5-slim
+# FROM debian:9.5-slim
+# add luarocks for lua module install
+FROM abaez/luarocks:lua5.1
 WORKDIR /root
 COPY --from=builder /bin/ .
 ENV PATH=$PATH:/root
