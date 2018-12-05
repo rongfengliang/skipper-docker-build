@@ -2,7 +2,7 @@ FROM golang:1.11.1 as builder
 WORKDIR /
 COPY .    /
 # Build
-RUN make deps && make build && ls -sail
+RUN make build
 
 # FROM debian:9.5-slim
 # add luarocks for lua module install
