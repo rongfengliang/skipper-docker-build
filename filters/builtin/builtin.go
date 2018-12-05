@@ -13,6 +13,7 @@ import (
 	"github.com/zalando/skipper/filters/diag"
 	"github.com/zalando/skipper/filters/flowid"
 	logfilter "github.com/zalando/skipper/filters/log"
+	"github.com/zalando/skipper/filters/myfilter"
 	"github.com/zalando/skipper/filters/ratelimit"
 	"github.com/zalando/skipper/filters/tee"
 	"github.com/zalando/skipper/filters/tracing"
@@ -82,6 +83,7 @@ func MakeRegistry() filters.Registry {
 		flowid.New(),
 		PreserveHost(),
 		NewStatus(),
+		myfilter.NewDefaultToken(),
 		NewCompress(),
 		NewCopyRequestHeader(),
 		NewCopyResponseHeader(),
